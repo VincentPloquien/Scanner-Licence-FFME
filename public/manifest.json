@@ -1,0 +1,8 @@
+{
+    "name": "Scanner Licence FFME",
+    "short_name": "Scanner",
+    "display": "standalone",
+    "lang": "fr",
+    "start_url": "/",
+    "theme_color": "#c63735"
+}
