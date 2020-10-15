@@ -25,6 +25,24 @@ Si vous ne voyez qu'un grand rectangle gris cela signifie que l'accès à la cam
 
 ### Installation de l'environnement de dev
 
+**Pour accéder à l'API FFME, il est indispensable d'utiliser un proxy afin d'éviter les erreurs de sécurité CORS.**
+Par exemple sur nginx :
+
+```nginx
+location /ffme/ {
+        proxy_set_header                X-Real-IP $remote_addr;
+        proxy_set_header                X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass                      https://licencie.ffme.fr/;
+        proxy_redirect                  off;
+
+        add_header                      'Access-Control-Allow-Origin' 'https://app.asaescalade.fr' always;
+        add_header                      'Access-Control-Allow-Methods' 'GET' always;
+
+        # Important pour éviter les soucis d'encodage avec l'API FFME
+        charset                         iso-8859-1;
+}
+```
+
 Installation des dépendances ...
 
 ```bash
