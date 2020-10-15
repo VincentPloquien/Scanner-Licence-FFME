@@ -1,91 +1,41 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Scanner de licences FFME
 
----
+Ce projet est une appli web destinée à gérer une séance d'escalade en scannant la licence de chaque participant pour vérifier leurs informations (passeport, validité licence, date de naissance, ...) et exporter la liste des personnes présentes à la séance.
 
-# svelte app
+Utile pour les encadrants et professeurs d'escalade devant vérifier les compétences (ex: passeport blanc requis pour grimper) ou garder un historique des grimpeurs (ex: cas contacts COVID, témoins d'accidents, ...). Originellement développée pour le club de l'ASA Escalade d'Avrillé elle est universelle et vous permettra d'abandonner vos vieux classeurs lourds et qui prennent de la place !
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+## Utilisation
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+L'application est actuellement hébergée à l'adresse [https://app.asaescalade.fr](https://app.asaescalade.fr/).
+
+**:warning: Attention**
+
+Pour le moment, il n'est pas possible d'utiliser l'appli sur un appareil sans appareil photo.
+Si vous ne voyez qu'un grand rectangle gris cela signifie que l'accès à la caméra est bloqué.
+
+### Fonctionnalités
+
+## Développement
+
+### Feuille de route
+
+### Installation de l'environnement de dev
+
+Installation des dépendances ...
 
 ```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
 npm install
 ```
 
-...then start [Rollup](https://rollupjs.org):
+... ensuite générez les fichiers HTML statiques via [Rollup](https://rollupjs.org):
 
 ```bash
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+Les modifications entraineront une régénération automatique.
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+**:warning: Attention**
 
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
-npm run build
-```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+Le scanner de QRCode utilisant les API d'accès à la caméra, les navigateurs (Chrome/Chromium notamment) requièrent que la page soit accédée via HTTPS. Il est donc nécessaire d'utiliser un environnement de développement en HTTPS, d'utiliser l'URL <http://localhost> ou de modifier votre configuration.
+Plus d'infos sur <https://www.chromium.org/Home/chromium-security/deprecating-powerful-features-on-insecure-origins#TOC-Testing-Powerful-Features>.

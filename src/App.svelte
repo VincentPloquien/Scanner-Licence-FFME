@@ -87,5 +87,6 @@
 </main>
 
 <footer>
-  <p>Appli web réalisée par <a href="https://twitter.com/Akwaryoum">Vincent Ploquien</a> pour l'<a href="https://asaescalade.fr/">ASA Escalade</a> 🧗‍♂️👨‍💻</p>
+  <p>Appli web réalisée par <a href="https://github.com/VincentPloquien">Vincent Ploquien</a> pour l'<a href="https://asaescalade.fr/">ASA Escalade</a>.</p>
+  <p>Le code est disponible sur <a href="https://github.com/VincentPloquien/Scanner-Licence-FFME">Github</a> !</p>
 </footer>
