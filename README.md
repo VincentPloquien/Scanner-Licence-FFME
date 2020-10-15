@@ -15,9 +15,13 @@ Si vous ne voyez qu'un grand rectangle gris cela signifie que l'accès à la cam
 
 ### Fonctionnalités
 
+`TO-DO...`
+
 ## Développement
 
 ### Feuille de route
+
+`TO-DO...`
 
 ### Installation de l'environnement de dev
 
