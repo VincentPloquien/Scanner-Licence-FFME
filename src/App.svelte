@@ -24,7 +24,7 @@
   }
 
   async function fetchLicence(url: string): Promise<Climber> {
-    var request_url = url.replace("licencie.ffme.fr", "asa.akwaryoum.fr/ffme");
+    var request_url = url.replace("licencie.ffme.fr", location.href + "ffme");
 
     return await fetch(request_url)
       .then((response) => response.arrayBuffer())
