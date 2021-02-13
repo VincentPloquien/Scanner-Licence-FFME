@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import Climber from '../climber';
 
 @Component({
   selector: 'app-licence-display',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./licence-display.component.css']
 })
 export class LicenceDisplayComponent implements OnInit {
+  @Input() climber!: Climber;
 
   constructor() { }
 

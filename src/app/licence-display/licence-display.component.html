@@ -1,1 +1,24 @@
-<p>licence-display works!</p>
+<img *ngIf="climber.picture" class="profile-picture" src={{climber.picture}} alt="{{climber.name}}">
+
+<b>{{climber.name}} <small>{{climber.id}}</small></b>
+
+<div *ngIf="!climber.isLicenceValid()" class="problem">La licence n'a pas été renouvellée !</div>
+
+<dl>
+    <dt>Date de naissance</dt>
+    <dd>{{climber.birthDate}}{{ !climber.isClimberAdult() ? " 👶" : ""}}</dd>
+</dl>
+
+<dl *ngIf="climber.club">
+    <dt>Club</dt>
+    <dd>{{climber.club}}</dd>
+</dl>
+
+<dl>
+    <dt>Diplômes</dt>
+    <dd>
+        <ul>
+            <li *ngFor="let diploma of climber.diplomas">{{diploma}}</li>
+        </ul>
+    </dd>
+</dl>

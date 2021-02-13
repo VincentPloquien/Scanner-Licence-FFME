@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import Climber from 'src/app/climber';
 
 @Component({
   selector: 'app-climbers-table',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClimbersTableComponent implements OnInit {
 
+  @Input() climbers!: Climber[];
+
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  resetClimbersList(): void {
+    this.climbers = [];
+  }
+
+  deleteClimberFromList(climber: Climber): void {
+    this.climbers.splice(this.climbers.indexOf(climber), 1);
   }
 
 }

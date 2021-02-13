@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 
 @Component({
@@ -10,6 +10,8 @@ export class ScannerComponent implements OnInit {
   scannerEnabled = false;
   oneShotScan = false;
 
+  @Output() scannedURL = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +22,8 @@ export class ScannerComponent implements OnInit {
     if (this.oneShotScan) {
       this.scannerEnabled = false;
     }
+
+    this.scannedURL.emit(result);
   }
   scanErrorHandler(error: any): void {
     console.error(error);

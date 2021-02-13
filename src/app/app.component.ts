@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import Climber from './climber';
+import { ClimbersService } from './climbers.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Scanner-Licence-FFME';
+  climbers: Climber[] = [];
+  lastScannedClimber: Climber | undefined;
+
+  constructor(private climbersService: ClimbersService) { }
+
+  ngOnInit() {
+    this.climbers = this.climbersService.getClimbers();
+    this.lastScannedClimber = this.climbers[this.climbers.length - 1];
+  }
+
+  scannedURLHandler(url: string): void {
+    this.climbersService.addClimberFromURL(url);
+  }
 }

@@ -14,15 +14,17 @@
 
     <main class="wrapper">
         <div class="panel box">
-            <app-scanner></app-scanner>
+            <app-scanner (scannedURL)=scannedURLHandler($event)></app-scanner>
         </div>
 
         <div class="panel box">
-            <app-licence-display></app-licence-display>
+            <h2>Dernier scan</h2>
+
+            <app-licence-display *ngIf=(lastScannedClimber) [climber]="lastScannedClimber"></app-licence-display>
         </div>
 
         <div class="panel box full-width">
-            <app-climbers-table></app-climbers-table>
+            <app-climbers-table [climbers]="climbers"></app-climbers-table>
         </div>
     </main>
 

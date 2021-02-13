@@ -1,0 +1,14 @@
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+button {
+    width: 100%;
+    color: white;
+    background-color: cornflowerblue;
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+}
