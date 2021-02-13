@@ -7,19 +7,22 @@ import { ZXingScannerComponent } from '@zxing/ngx-scanner';
   styleUrls: ['./scanner.component.css']
 })
 export class ScannerComponent implements OnInit {
-
-  @ViewChild('scanner', { static: false })
-  scanner?: ZXingScannerComponent;
+  scannerEnabled = false;
+  oneShotScan = false;
 
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
-  scanSuccess($event: any): void {
-    console.debug($event);
-    this.scanner?.scanStop();
+  scanSuccessHandler(result: any): void {
+    console.log(result);
+    if (this.oneShotScan) {
+      this.scannerEnabled = false;
+    }
+  }
+  scanErrorHandler(error: any): void {
+    console.error(error);
   }
 
 }

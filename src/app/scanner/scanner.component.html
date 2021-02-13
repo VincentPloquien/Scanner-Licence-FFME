@@ -1,1 +1,11 @@
-<zxing-scanner #scanner (scanSuccess)="scanSuccess($event)"></zxing-scanner>
+<zxing-scanner #scanner [enable]='scannerEnabled' (scanSuccess)="scanSuccessHandler($event)"
+    (scanError)="scanErrorHandler($event)">
+</zxing-scanner>
+
+<div class="controls">
+    <button *ngIf="!scannerEnabled" (click)="scannerEnabled=true; oneShotScan=true">Lancer un
+        scan<br /><small>one-shot</small></button>
+    <button *ngIf="!scannerEnabled" (click)="scannerEnabled=true; oneShotScan=false">Lancer un scan<br /><small>en
+            continu</small></button>
+    <button *ngIf="scannerEnabled" (click)="scannerEnabled=false">Stopper le scan</button>
+</div>
