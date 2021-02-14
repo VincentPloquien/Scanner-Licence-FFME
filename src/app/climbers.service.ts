@@ -7,8 +7,6 @@ import Climber from './climber';
 export class ClimbersService {
   climbers: Climber[] = [];
 
-  constructor() { }
-
   getClimbers(): Climber[] {
     this.climbers = [
       new Climber('Vincent', 123, 'picture', '13/11/1998', 'ASA', 2021, 'champion', ['passeport escalade jaune'], 'trofort', 0),
@@ -18,8 +16,8 @@ export class ClimbersService {
     return this.climbers;
   }
 
-  async addClimberFromURL(url: string): Promise<void> {
-    const climber = await fetch(url)
+  addClimberFromURL(url: string): void {
+    fetch(url)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
         // iso-8859-1 decoding from https://schneide.blog/2018/08/08/decoding-non-utf8-server-responses-using-the-fetch-api/
@@ -31,21 +29,15 @@ export class ClimbersService {
         // parse the interesting bits from the FFME page
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        const licence: Climber = this.parseLicenceFromHTML(doc);
-        return licence;
+        return this.parseLicenceFromHTML(doc);
       })
-      .then((licence) => {
-        console.log('Decoded licence: ', licence);
-        return licence;
+      .then((climber) => {
+        console.log('Decoded licence: ', climber);
+        this.climbers.push(climber);
       })
       .catch((error: string) => {
         console.error(`Impossible de récupérer la licence: ${error}`);
-        return null;
       });
-
-    if (climber) {
-      this.climbers.push(climber);
-    }
   }
 
   private parseLicenceFromHTML(doc: Document): Climber {

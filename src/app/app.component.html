@@ -20,12 +20,14 @@
         <div class="panel box">
             <h2>Dernier scan</h2>
 
-            <app-licence-display *ngIf=(lastScannedClimber) [climber]="lastScannedClimber"></app-licence-display>
+            <app-licence-display *ngIf="climbers.length>0" [climber]="climbers[climbers.length-1]">
+            </app-licence-display>
         </div>
 
         <div class="panel box full-width">
             <app-climbers-table [climbers]="climbers"></app-climbers-table>
         </div>
+
     </main>
 
     <footer>

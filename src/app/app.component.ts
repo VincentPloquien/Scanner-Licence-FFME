@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Climber from './climber';
 import { ClimbersService } from './climbers.service';
 
@@ -7,15 +7,13 @@ import { ClimbersService } from './climbers.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   climbers: Climber[] = [];
-  lastScannedClimber: Climber | undefined;
 
   constructor(private climbersService: ClimbersService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.climbers = this.climbersService.getClimbers();
-    this.lastScannedClimber = this.climbers[this.climbers.length - 1];
   }
 
   scannedURLHandler(url: string): void {

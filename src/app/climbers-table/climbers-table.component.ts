@@ -6,15 +6,9 @@ import Climber from 'src/app/climber';
   templateUrl: './climbers-table.component.html',
   styleUrls: ['./climbers-table.component.css']
 })
-export class ClimbersTableComponent implements OnInit {
+export class ClimbersTableComponent {
 
   @Input() climbers!: Climber[];
-
-  constructor() { }
-
-  ngOnInit(): void {
-
-  }
 
   resetClimbersList(): void {
     this.climbers = [];
@@ -22,6 +16,7 @@ export class ClimbersTableComponent implements OnInit {
 
   deleteClimberFromList(climber: Climber): void {
     this.climbers.splice(this.climbers.indexOf(climber), 1);
+    console.log(this.climbers);
   }
 
 }
