@@ -8,15 +8,11 @@ export class ClimbersService {
   climbers: Climber[] = [];
 
   getClimbers(): Climber[] {
-    this.climbers = [
-      new Climber('Vincent', 123, 'picture', '13/11/1998', 'ASA', 2021, 'champion', ['passeport escalade jaune'], 'trofort', 0),
-      new Climber('Vincentbis', 12345, 'picture', '13/11/1998', 'ASA', 2021, 'champion', ['passeport escalade vert'], 'trofort', 0)
-    ];
-
     return this.climbers;
   }
 
   addClimberFromURL(url: string): void {
+    url = url.replace("https://licencie.ffme.fr/", "http://localhost:4200/ffme/");
     fetch(url)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
