@@ -58,4 +58,11 @@ export class ClimbersTableComponent implements OnInit {
     document?.getElementById("exportButton")?.toggleAttribute('disabled', false);
   }
 
+  rowClassesForClimber(climber: Climber): Record<string, boolean> {
+    return {
+      "table-danger": !climber.isLicenceValid(),
+      "table-warning": !climber.isClimberAdult()
+    }
+  }
+
 }
