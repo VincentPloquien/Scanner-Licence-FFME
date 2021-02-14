@@ -29,6 +29,9 @@ export class ClimbersService {
       })
       .then((climber) => {
         console.log('Decoded licence: ', climber);
+        if (this.climbers.find(needle => needle.id === climber.id)) {
+          return;
+        }
         this.climbers.push(climber);
       })
       .catch((error: string) => {
