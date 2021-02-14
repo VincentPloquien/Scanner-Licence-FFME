@@ -6,6 +6,7 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { LicenceDisplayComponent } from './licence-display/licence-display.component';
 import { ClimbersTableComponent } from './climbers-table/climbers-table.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
   ],
   imports: [
     ZXingScannerModule,
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@
                 <th id="table-club">Club</th>
                 <th id="table-birthdate">Date de naissance</th>
                 <th id="table-passport">Passeport</th>
-                <th><button class="icon" (click)="resetClimbersList()">🧹&nbsp;Tout effacer</button></th>
+                <th>🗑</th>
             </tr>
         </thead>
 
@@ -25,7 +25,7 @@
                     <th>/* Boutons */</th>
                  -->
 
-                <td>{{climber.scanTime | date}}</td>
+                <td>{{climber.scanTime | date:'dd/MM/yyyy HH:mm' }}</td>
                 <td>{{climber.name}}</td>
                 <td>{{climber.id}}</td>
                 <td [class.invalid]="!climber.isLicenceValid()">{{ climber.year }}</td>
@@ -33,11 +33,11 @@
                 <td [class.kid]="!climber.isClimberAdult()">{{climber.birthDate}}</td>
                 <td>
                     <span [class.special]="climber.getHighestPassport().special"
-                        style="background: {{climber.getHighestPassport().color}};"></span>&nbsp;{{
-                    climber.getHighestPassport().shortname }}
+                        [style.background]="climber.getHighestPassport().color"></span>
+                    &nbsp;{{ climber.getHighestPassport().shortname }}
                 </td>
                 <td>
-                    <button class="icon" (click)="deleteClimberFromList(climber)">❌&nbsp;Supprimer</button>
+                    <button class="icon" (click)="deleteClimberFromList(climber)">❌</button>
                 </td>
             </tr>
         </tbody>
@@ -50,18 +50,21 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>Total : {{climbers.length}}</th>
                 <th></th>
+                <th *ngIf="climbers.length>0">Total : {{climbers.length}}</th>
             </tr>
         </tfoot>
     </table>
 </div>
 
-<!-- <form on:submit|preventDefault={exportList}>
+<form *ngIf="climbers.length>0" (submit)="exportTable($event)">
     <div>
         <label for="manager">Responsable: </label>
-        <input bind:value={manager} required id="manager" type="text">
+        <input [(ngModel)]="manager" required name="manager" type="text">
     </div>
 
-    <button type="submit" class="big-button">Exporter la liste</button>
-</form> -->
+    <div class="controls horizontal">
+        <button class="danger" (click)="resetClimbersList()">Tout effacer</button>
+        <button id="exportButton" type="submit">Exporter la liste</button>
+    </div>
+</form>

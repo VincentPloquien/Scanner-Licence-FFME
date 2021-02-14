@@ -12,7 +12,7 @@ export class ClimbersService {
   }
 
   addClimberFromURL(url: string): void {
-    url = url.replace("https://licencie.ffme.fr/", "http://localhost:4200/ffme/");
+    url = url.replace('https://licencie.ffme.fr/', `${location.origin}/ffme/`);
     fetch(url)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {

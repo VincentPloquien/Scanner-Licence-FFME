@@ -125,12 +125,35 @@ table tbody tr:nth-child(odd) {
     background: #f3f3f3;
 }
 
+.controls {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+.controls.horizontal {
+    flex-direction: row;
+}
+.controls.horizontal button {
+    margin: 0 0.4rem;
+}
+
 button {
+    width: 100%;
+    color: white;
+    background-color: #1e88e5;
+
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.6rem;
     cursor: pointer;
 }
 button.icon {
     border-style: none;
     background: none;
+    color: initial;
+}
+button.danger {
+    background-color: #c62828;
 }
 
 dl {

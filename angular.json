@@ -33,7 +33,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "jspdf",
+              "jspdf-autotable",
+              "raf",
+              "@babel/runtime-corejs3"
+            ]
           },
           "configurations": {
             "production": {
