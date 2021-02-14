@@ -7,5 +7,6 @@
         scan<br /><small>one-shot</small></button>
     <button *ngIf="!scannerEnabled" (click)="scannerEnabled=true; oneShotScan=false">Lancer un scan<br /><small>en
             continu</small></button>
-    <button *ngIf="scannerEnabled" (click)="scannerEnabled=false">Stopper le scan</button>
+    <button style="background-color: #c62828;" *ngIf="scannerEnabled" (click)="scannerEnabled=false">Stopper le
+        scan</button>
 </div>
