@@ -1,41 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
+<header class="panel full-width">
+    <h1>Scanner de licences FFME</h1>
+</header>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scanner FFME</title>
-</head>
+<main class="wrapper">
+    <div class="panel box">
+        <app-scanner (scannedURL)=scannedURLHandler($event)></app-scanner>
+    </div>
 
-<body>
-    <header class="panel full-width">
-        <h1>Scanner de licences FFME</h1>
-    </header>
+    <div class="panel box">
+        <h2>Dernier scan</h2>
 
-    <main class="wrapper">
-        <div class="panel box">
-            <app-scanner (scannedURL)=scannedURLHandler($event)></app-scanner>
-        </div>
+        <app-licence-display *ngIf="climbers.length>0" [climber]="climbers[climbers.length-1]">
+        </app-licence-display>
+    </div>
 
-        <div class="panel box">
-            <h2>Dernier scan</h2>
+    <div class="panel box full-width">
+        <app-climbers-table [climbers]="climbers"></app-climbers-table>
+    </div>
 
-            <app-licence-display *ngIf="climbers.length>0" [climber]="climbers[climbers.length-1]">
-            </app-licence-display>
-        </div>
+</main>
 
-        <div class="panel box full-width">
-            <app-climbers-table [climbers]="climbers"></app-climbers-table>
-        </div>
-
-    </main>
-
-    <footer>
-        <p>Appli web réalisée par <a href="https://github.com/VincentPloquien">Vincent Ploquien</a> pour l'<a
-                href="https://asaescalade.fr/">ASA Escalade</a>.</p>
-        <p>Le code est disponible sur <a href="https://github.com/VincentPloquien/Scanner-Licence-FFME">Github</a> !</p>
-    </footer>
-
-</body>
-
-</html>
+<footer>
+    <p>Appli web réalisée par <a href="https://github.com/VincentPloquien">Vincent Ploquien</a> pour l'<a
+            href="https://asaescalade.fr/">ASA Escalade</a>.</p>
+    <p>Le code est disponible sur <a href="https://github.com/VincentPloquien/Scanner-Licence-FFME">Github</a> !</p>
+</footer>
