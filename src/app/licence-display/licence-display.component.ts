@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Climber from '../climber';
 
 @Component({
@@ -6,12 +6,7 @@ import Climber from '../climber';
   templateUrl: './licence-display.component.html',
   styleUrls: ['./licence-display.component.css']
 })
-export class LicenceDisplayComponent implements OnInit {
+export class LicenceDisplayComponent {
   @Input() climber!: Climber;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
