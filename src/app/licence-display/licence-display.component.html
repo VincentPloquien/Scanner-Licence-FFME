@@ -1,24 +1,36 @@
-<img *ngIf="climber.picture" class="profile-picture" src={{climber.picture}} alt="{{climber.name}}">
+<div class="card">
+    <img *ngIf="climber.picture" class="card-img-top" src={{climber.picture}} alt="{{climber.name}}">
+    <svg *ngIf="!climber.picture" class="card-img-top bi" width="120" height="120" fill="currentColor">
+        <use xlink:href="bootstrap-icons.svg#person-fill" />
+    </svg>
 
-<b>{{climber.name}} <small>{{climber.id}}</small></b>
 
-<div *ngIf="!climber.isLicenceValid()" class="problem">La licence n'a pas été renouvellée !</div>
 
-<dl>
-    <dt>Date de naissance</dt>
-    <dd>{{climber.birthDate}}{{ !climber.isClimberAdult() ? " 👶" : ""}}</dd>
-</dl>
+    <div class="card-body">
+        <h5 class="card-title">
+            {{climber.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{climber.id}}</h6>
+        <span class="badge" [class.special]="climber.getHighestPassport().special"
+            [style.background-color]="climber.getHighestPassport().bgColor"
+            [style.color]="climber.getHighestPassport().fgColor">
+            {{climber.getHighestPassport().shortname}}</span>
+        <!-- <span *ngFor="let passport of climber.getPassports()" class="badge" [class.special]="passport.special"
+            [style.background-color]="passport.color">
+            {{passport.shortname}}</span> -->
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            Né(e) le {{climber.birthDate}}{{ !climber.isClimberAdult() ? " 👶" : ""}}
+        </li>
+        <li *ngIf="climber.club" class="list-group-item">
+            <i class="bi-house"></i>{{climber.club}}
+        </li>
+        <li *ngIf="climber.isLicenceValid()" class="list-group-item">
+            <i class="bi-check-circle"></i>Licence valide
+        </li>
+        <li *ngIf="!climber.isLicenceValid()" class="list-group-item bg-danger">
+            Licence périmée
+        </li>
 
-<dl *ngIf="climber.club">
-    <dt>Club</dt>
-    <dd>{{climber.club}}</dd>
-</dl>
-
-<dl>
-    <dt>Diplômes</dt>
-    <dd>
-        <ul>
-            <li *ngFor="let diploma of climber.diplomas">{{diploma}}</li>
-        </ul>
-    </dd>
-</dl>
+    </ul>
+</div>

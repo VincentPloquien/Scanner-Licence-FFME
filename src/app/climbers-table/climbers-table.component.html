@@ -2,7 +2,7 @@
     <table class="table table- table-bordered" id="climbers-table">
         <thead>
             <tr>
-                <th class="d-none d-print-table-cell" scope="col" id="table-date">Heure du scan</th>
+                <th class="d-none" scope="col" id="table-date">Heure du scan</th>
                 <th scope="col" id="table-name">Nom</th>
                 <th scope="col" id="table-id">Licence</th>
                 <th scope="col" id="table-year">Année</th>
@@ -25,7 +25,7 @@
                         <th>/* Boutons */</th>
                      -->
 
-                <td>{{climber.scanTime | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td class="d-none">{{climber.scanTime | date:'dd/MM/yyyy HH:mm' }}</td>
                 <td scope="row">{{climber.name}}</td>
                 <td>{{climber.id}}</td>
                 <td>{{ climber.year }}</td>
@@ -33,7 +33,7 @@
                 <td>{{climber.birthDate}}</td>
                 <td>
                     <span [class.special]="climber.getHighestPassport().special"
-                        [style.background]="climber.getHighestPassport().color"></span>
+                        [style.background]="climber.getHighestPassport().bgColor"></span>
                     &nbsp;{{ climber.getHighestPassport().shortname }}
                 </td>
                 <td class="align-middle">
