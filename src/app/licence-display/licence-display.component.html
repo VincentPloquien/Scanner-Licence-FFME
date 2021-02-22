@@ -1,24 +1,42 @@
-<img *ngIf="climber.picture" class="profile-picture" src={{climber.picture}} alt="{{climber.name}}">
+<div class="card h-100">
+    <div class="ratio ratio-1x1">
+        <img *ngIf="climber && climber.picture" style="object-fit: contain;" class="card-img-top"
+            src={{climber.picture}} alt="{{climber.name}}">
+        <svg *ngIf="climber && !climber.picture" class="card-img-top bi" width="120" height="120" fill="currentColor">
+            <use xlink:href="bootstrap-icons.svg#person-fill" />
+        </svg>
+    </div>
 
-<b>{{climber.name}} <small>{{climber.id}}</small></b>
+    <div class="card-body">
+        <h5 class="card-title">
+            {{climber ? climber.name : ''}}
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{climber ? climber.id : ''}}</h6>
+        <!-- <span class="badge" [class.special]="climber.getHighestPassport().special"
+            [style.background-color]="climber.getHighestPassport().bgColor"
+            [style.color]="climber.getHighestPassport().fgColor">
+            {{climber.getHighestPassport().shortname}}</span> -->
 
-<div *ngIf="!climber.isLicenceValid()" class="problem">La licence n'a pas été renouvellée !</div>
+        <ng-container *ngIf="climber">
+            <span *ngFor="let passport of climber.getPassports()" class="badge mb-1" [class.special]="passport.special"
+                [style.background-color]="passport.bgColor" [style.color]="climber.getHighestPassport().fgColor">
+                {{passport.shortname}}</span>
+        </ng-container>
+    </div>
+    <ul class="list-group list-group-flush" *ngIf="climber">
+        <li class="list-group-item">
+            <i class="bi-clock"></i> {{ climber && climber.birthDate}}{{ climber && !climber.isClimberAdult() ? " 👶" :
+            "" }}
+        </li>
+        <li *ngIf="climber && climber.club" class="list-group-item">
+            <i class="bi-house"></i> {{ climber && climber.club }}
+        </li>
+        <li *ngIf="climber && climber.isLicenceValid()" class="list-group-item">
+            <i class="bi-check-circle"></i> Licence valide
+        </li>
+        <li *ngIf="climber && !climber.isLicenceValid()" class="list-group-item bg-danger">
+            <i class="bi-x-square"></i> Licence périmée
+        </li>
 
-<dl>
-    <dt>Date de naissance</dt>
-    <dd>{{climber.birthDate}}{{ !climber.isClimberAdult() ? " 👶" : ""}}</dd>
-</dl>
-
-<dl *ngIf="climber.club">
-    <dt>Club</dt>
-    <dd>{{climber.club}}</dd>
-</dl>
-
-<dl>
-    <dt>Diplômes</dt>
-    <dd>
-        <ul>
-            <li *ngFor="let diploma of climber.diplomas">{{diploma}}</li>
-        </ul>
-    </dd>
-</dl>
+    </ul>
+</div>

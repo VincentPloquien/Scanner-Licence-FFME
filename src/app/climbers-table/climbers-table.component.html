@@ -1,70 +1,69 @@
-<div class="table-container">
-    <table id="climbers-table">
-        <thead>
+<div class="table-responsive-md">
+    <table class="table table-bordered align-middle" id="climbers-table">
+        <thead class="table-light">
             <tr>
-                <th id="table-date">Heure du scan</th>
-                <th id="table-name">NOM Prénom</th>
-                <th id="table-id">N° de licence</th>
-                <th id="table-year">Année de validité</th>
-                <th id="table-club">Club</th>
-                <th id="table-birthdate">Date de naissance</th>
-                <th id="table-passport">Passeport</th>
-                <th>🗑</th>
+                <th class="d-none" scope="col" id="table-date">Heure du scan</th>
+                <th scope="col" id="table-name">Nom</th>
+                <th scope="col" id="table-id">Licence</th>
+                <th scope="col" id="table-year">Année</th>
+                <th scope="col" id="table-club">Club</th>
+                <th scope="col" id="table-birthdate">Date de naissance</th>
+                <th scope="col" id="table-passport">Passeport</th>
+                <th scope="col"></th>
             </tr>
         </thead>
 
-        <tbody>
-            <tr *ngFor="let climber of climbers">
+        <tbody *ngIf="climbers.length>0">
+            <tr *ngFor="let climber of climbers" [ngClass]="rowClassesForClimber(climber)">
                 <!--
-                    <th>Nom</th>
-                    <th>N° de licence</th>
-                    <th>Année de validité</th>
-                    <th>Club</th>
-                    <th>Année de naissance</th>
-                    <th>Passeport</th>
-                    <th>/* Boutons */</th>
-                 -->
+                        <th>Nom</th>
+                        <th>N° de licence</th>
+                        <th>Année de validité</th>
+                        <th>Club</th>
+                        <th>Année de naissance</th>
+                        <th>Passeport</th>
+                        <th>/* Boutons */</th>
+                     -->
 
-                <td>{{climber.scanTime | date:'dd/MM/yyyy HH:mm' }}</td>
-                <td>{{climber.name}}</td>
-                <td>{{climber.id}}</td>
-                <td [class.invalid]="!climber.isLicenceValid()">{{ climber.year }}</td>
-                <td>{{climber.club ? climber.club : "?"}}</td>
-                <td [class.kid]="!climber.isClimberAdult()">{{climber.birthDate}}</td>
+                <td class="d-none">{{climber.scanTime | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td scope="row">{{climber.name}}</td>
+                <td>{{ climber.id }}</td>
+                <td>{{ climber.year != 0 ? climber.year : "" }}</td>
+                <td>{{ climber.club ? climber.club : "" }}</td>
+                <td>{{ climber.birthDate }}</td>
                 <td>
                     <span [class.special]="climber.getHighestPassport().special"
-                        [style.background]="climber.getHighestPassport().color"></span>
+                        [style.background]="climber.getHighestPassport().bgColor"></span>
                     &nbsp;{{ climber.getHighestPassport().shortname }}
                 </td>
-                <td>
-                    <button class="icon" (click)="deleteClimberFromList(climber)">❌</button>
+                <td class="text-center">
+                    <button class="btn btn-danger" (click)="deleteClimberFromList(climber)">
+                        <i class="bi-trash"></i>
+                    </button>
                 </td>
             </tr>
         </tbody>
 
-        <tfoot>
+        <tfoot class="table-light">
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th *ngIf="climbers.length>0">Total : {{climbers.length}}</th>
+                <th class="text-end" colspan="7">Total : {{ climbers.length }}</th>
             </tr>
         </tfoot>
     </table>
 </div>
 
 <form *ngIf="climbers.length>0" (submit)="exportTable($event)">
-    <div>
-        <label for="manager">Responsable: </label>
-        <input [(ngModel)]="manager" required name="manager" type="text">
+    <div class="row mb-3">
+        <label class="col-md-2 col-form-label" for="manager">Responsable: </label>
+        <div class="col-md-10">
+            <input class="form-control" [(ngModel)]="manager" required name="manager" id="manager" type="text">
+        </div>
     </div>
 
-    <div class="controls horizontal">
-        <button class="danger" (click)="resetClimbersList()">Tout effacer</button>
-        <button id="exportButton" type="submit">Exporter la liste</button>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-outline-danger me-md-auto" (click)="resetClimbersList()">Remise
+            à zéro</button>
+        <button type="button" class="btn btn-outline-primary" id="addButton">Ajout manuel</button>
+        <button type="button" class="btn btn-outline-success" id="exportButton" type="submit">Export</button>
     </div>
 </form>

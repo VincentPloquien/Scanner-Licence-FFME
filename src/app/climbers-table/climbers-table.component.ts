@@ -22,7 +22,7 @@ export class ClimbersTableComponent implements OnInit {
 
   deleteClimberFromList(climber: Climber): void {
     this.climbers.splice(this.climbers.indexOf(climber), 1);
-    console.log(this.climbers);
+    console.log(`bye ${climber.name}`);
   }
 
   exportTable(event: Event): void {
@@ -56,6 +56,13 @@ export class ClimbersTableComponent implements OnInit {
 
     // Bouton du formulaire dispo
     document?.getElementById("exportButton")?.toggleAttribute('disabled', false);
+  }
+
+  rowClassesForClimber(climber: Climber): Record<string, boolean> {
+    return {
+      "table-danger": !climber.isLicenceValid(),
+      "table-warning": !climber.isClimberAdult()
+    }
   }
 
 }

@@ -1,12 +1,24 @@
-<zxing-scanner #scanner [enable]='scannerEnabled' (scanSuccess)="scanSuccessHandler($event)"
-    (scanError)="scanErrorHandler($event)">
-</zxing-scanner>
+<div class="ratio ratio-4x3 bg-light mb-2">
+    <zxing-scanner style="z-index:1" #scanner [enable]='scannerEnabled' (scanSuccess)="scanSuccessHandler($event)"
+        (scanError)="scanErrorHandler($event)">
+    </zxing-scanner>
 
-<div class="controls horizontal">
-    <button *ngIf="!scannerEnabled" (click)="scannerEnabled=true; oneShotScan=true">Lancer un
-        scan<br /><small>one-shot</small></button>
-    <button *ngIf="!scannerEnabled" (click)="scannerEnabled=true; oneShotScan=false">Lancer un scan<br /><small>en
-            continu</small></button>
-    <button class="danger" *ngIf="scannerEnabled" (click)="scannerEnabled=false">Stopper le
+    <div style="z-index:1" class="d-flex flex-column gap-2 justify-content-center" *ngIf="!scannerEnabled">
+        <button class="btn btn-primary" (click)="scannerEnabled=true; oneShotScan=true">
+            Scan<br /><small>unique</small>
+        </button>
+        <button class="btn btn-primary" (click)=" scannerEnabled=true; oneShotScan=false">
+            Scan<br /><small>en continu</small>
+        </button>
+    </div>
+
+    <div class="d-flex" *ngIf="scannerEnabled">
+        <div class="spinner-border m-auto" role="status"></div>
+    </div>
+</div>
+<div class="d-grid gap-2">
+    <button class="btn btn-danger" [attr.disabled]="scannerEnabled ? null : ''" (click)="scannerEnabled=false">Stopper
+        le
         scan</button>
+
 </div>

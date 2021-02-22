@@ -2,21 +2,22 @@ export interface Passport {
     key: string;
     shortname: string;
     special: boolean;
-    color: string;
+    fgColor: string;
+    bgColor: string;
 }
 
 export default class Climber {
     static passports: Array<Passport> = [
-        { key: 'passeport escalade blanc', shortname: 'Blanc', color: '#fff', special: false },
-        { key: 'passeport escalade jaune', shortname: 'Jaune', color: '#f5cf11', special: false },
-        { key: 'passeport escalade orange', shortname: 'Orange', color: '#f78c22', special: false },
-        { key: 'initiateur sae', shortname: 'Initiateur SAE', color: '#fff', special: true },
-        { key: 'passeport escalade vert', shortname: 'Vert', color: '#aad135', special: false },
-        { key: 'passeport escalade bleu', shortname: 'Bleu', color: '#00acd0', special: false },
-        { key: 'initiateur escalade', shortname: 'Initiateur', color: '#fff', special: true },
-        { key: 'passeport escalade violet', shortname: 'Violet', color: '#5e2e91', special: false },
-        { key: 'passeport escalade rouge', shortname: 'Rouge', color: '#cc1e28', special: false },
-        { key: 'passeport escalade noir', shortname: 'Noir', color: '#000', special: false },
+        { key: 'passeport escalade blanc', shortname: 'Passeport Blanc', fgColor: "#000", bgColor: '#fff', special: false },
+        { key: 'passeport escalade jaune', shortname: 'Passeport Jaune', fgColor: "#fff", bgColor: '#f5cf11', special: false },
+        { key: 'passeport escalade orange', shortname: 'Passeport Orange', fgColor: "#fff", bgColor: '#f78c22', special: false },
+        { key: 'initiateur sae', shortname: 'Initiateur SAE', fgColor: "#fff", bgColor: '#f78c22', special: true },
+        { key: 'passeport escalade vert', shortname: 'Passeport Vert', fgColor: "#fff", bgColor: '#aad135', special: false },
+        { key: 'passeport escalade bleu', shortname: 'Passeport Bleu', fgColor: "#fff", bgColor: '#00acd0', special: false },
+        { key: 'initiateur escalade', shortname: 'Initiateur', fgColor: "#fff", bgColor: '#00acd0', special: true },
+        { key: 'passeport escalade violet', shortname: 'Passeport Violet', fgColor: "#fff", bgColor: '#5e2e91', special: false },
+        { key: 'passeport escalade rouge', shortname: 'Passeport Rouge', fgColor: "#fff", bgColor: '#cc1e28', special: false },
+        { key: 'passeport escalade noir', shortname: 'Passeport Noir', fgColor: "#fff", bgColor: '#000', special: false },
     ];
 
     constructor(
@@ -34,6 +35,10 @@ export default class Climber {
     }
 
     getHighestPassport(): Passport {
+        return this.getPassports()[0] || undefined;
+    }
+
+    getPassports(): Array<Passport> {
         let sortedList: Passport[] = [];
 
         for (const passport of Climber.passports) {
@@ -44,7 +49,7 @@ export default class Climber {
             }
         }
 
-        return sortedList[0] || undefined;
+        return sortedList;
     }
 
     isLicenceValid(): boolean {

@@ -1,27 +1,17 @@
-<header class="panel full-width">
-    <h1>Scanner de licences FFME</h1>
-</header>
-
-<main class="wrapper">
-    <div class="panel box">
-        <app-scanner (scannedURL)=scannedURLHandler($event)></app-scanner>
+<div class="container-md">
+    <div class="row">
+        <div class="col-md-9">
+            <app-scanner (scannedURL)=scannedURLHandler($event)></app-scanner>
+        </div>
+        <div class="col-md-3 mt-4 mt-md-0">
+            <app-licence-display [climber]="climbers[climbers.length-1]">
+            </app-licence-display>
+        </div>
     </div>
 
-    <div class="panel box">
-        <h2>Dernier scan</h2>
-
-        <app-licence-display *ngIf="climbers.length>0" [climber]="climbers[climbers.length-1]">
-        </app-licence-display>
+    <div class="row mt-4">
+        <div class="col-12">
+            <app-climbers-table [climbers]="climbers"></app-climbers-table>
+        </div>
     </div>
-
-    <div class="panel box full-width">
-        <app-climbers-table [climbers]="climbers"></app-climbers-table>
-    </div>
-
-</main>
-
-<footer>
-    <p>Appli web réalisée par <a href="https://github.com/VincentPloquien">Vincent Ploquien</a> pour l'<a
-            href="https://asaescalade.fr/">ASA Escalade</a>.</p>
-    <p>Le code est disponible sur <a href="https://github.com/VincentPloquien/Scanner-Licence-FFME">Github</a> !</p>
-</footer>
+</div>
