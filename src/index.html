@@ -10,9 +10,21 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-  <header class="flex-shrink-0">
+  <header class="flex-shrink-0 pt-md-4 mb-4 bg-light">
     <div class="container">
-      <h1>Scanner de licences FFME</h1>
+      <div class="d-flex">
+        <h1 class="flex-grow-1">Scanner de licences FFME</h1>
+
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#configModal">Configuration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">A propos</a>
+          </li>
+        </ul>
+
+      </div>
     </div>
   </header>
 
@@ -20,13 +32,60 @@
     <app-root></app-root>
   </main>
 
-  <footer class="footer mt-auto py-3">
+  <!-- <footer class="footer mt-auto py-3 bg-dark text-light">
     <div class="container">
       <p>Appli web réalisée par <a href="https://github.com/VincentPloquien">Vincent Ploquien</a> pour l'<a
           href="https://asaescalade.fr/">ASA Escalade</a>.</p>
       <p>Le code est disponible sur <a href="https://github.com/VincentPloquien/Scanner-Licence-FFME">Github</a> !</p>
     </div>
-  </footer>
+  </footer> -->
+
+  <div class="modal fade" tabindex="-1" id="aboutModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">A propos de l'application</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <h3>Explications</h3>
+          <p>Cette application a été développée par <a href="https://github.com/VincentPloquien">Vincent Ploquien</a> et
+            le code qui la compose est disponible publiquement et gratuitement sur <a
+              href="https://github.com/VincentPloquien/Scanner-Licence-FFME">Github</a>.</p>
+          <p>Tout le monde est libre de l'utiliser sans restriction, même si à l'origine c'est un projet dédié au club
+            de l'<a href="https://asaescalade.fr/">ASA Escalade</a>.</p>
+          <br>
+          <h3>Informations légales</h3>
+          <b>Hébergeur</b>
+          <p>Ce site internet est hébergé par OVH SAS.</p>
+          <b>Responsable</b>
+          <h3>Licences</h3>
+          <p>D'autres logiciels ont été utilisés pour créer cette application, voici ci-dessous leurs licences.</p>
+          <pre>
+
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" id="configModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Configuration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary">Sauvegarder</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
