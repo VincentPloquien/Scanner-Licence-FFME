@@ -5,7 +5,7 @@
 
     <div style="z-index:1" class="d-flex flex-column gap-2 justify-content-center" *ngIf="!scannerEnabled">
         <button class="btn btn-primary" (click)="scannerEnabled=true; oneShotScan=true">
-            Scan<br /><small>one-shot</small>
+            Scan<br /><small>unique</small>
         </button>
         <button class="btn btn-primary" (click)=" scannerEnabled=true; oneShotScan=false">
             Scan<br /><small>en continu</small>

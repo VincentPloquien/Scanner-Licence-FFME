@@ -13,7 +13,7 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody *ngIf="climbers.length>0">
             <tr *ngFor="let climber of climbers" [ngClass]="rowClassesForClimber(climber)">
                 <!--
                         <th>Nom</th>
@@ -37,8 +37,9 @@
                     &nbsp;{{ climber.getHighestPassport().shortname }}
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-danger" (click)="deleteClimberFromList(climber)"><i
-                            class="bi-trash"></i></button>
+                    <button class="btn btn-danger" (click)="deleteClimberFromList(climber)">
+                        <i class="bi-trash"></i>
+                    </button>
                 </td>
             </tr>
         </tbody>

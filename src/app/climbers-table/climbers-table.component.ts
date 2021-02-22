@@ -22,7 +22,7 @@ export class ClimbersTableComponent implements OnInit {
 
   deleteClimberFromList(climber: Climber): void {
     this.climbers.splice(this.climbers.indexOf(climber), 1);
-    console.log(this.climbers);
+    console.log(`bye ${climber.name}`);
   }
 
   exportTable(event: Event): void {
