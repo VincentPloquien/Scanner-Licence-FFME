@@ -1,0 +1,11 @@
+{
+    "/ffme": {
+        "target": "https://licencie.ffme.fr/",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/ffme": ""
+        },
+        "changeOrigin": true
+    }
+}

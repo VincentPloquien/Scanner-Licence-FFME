@@ -1,0 +1,8 @@
+span.badge {
+  display: block;
+  line-height: 1.2em;
+}
+
+span.badge.special {
+  border: 2px dashed black;
+}

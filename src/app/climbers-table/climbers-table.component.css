@@ -1,0 +1,21 @@
+/* span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    border: solid 1px black;
+}
+span.special {
+    border-style: dotted;
+}
+
+.table-container {
+    overflow-x: auto;
+    max-width: 90vw;
+}
+form {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+} */

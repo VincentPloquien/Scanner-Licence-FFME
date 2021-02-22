@@ -1,4 +1,8 @@
-:root {
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+/* You can add global styles to this file, and also import other style files */
+/* :root {
     --background: #f3f3f3;
     --accent: #c63735;
 }
@@ -11,6 +15,10 @@ html {
 }
 
 body {
+    margin: 0;
+}
+
+app-root {
     box-sizing: border-box;
 
     display: grid;
@@ -28,7 +36,6 @@ main {
     max-width: 1600px;
     padding-bottom: 2rem;
 }
-
 
 .wrapper {
     display: grid;
@@ -55,17 +62,19 @@ header h1 {
 }
 
 footer {
-    display: flex;
-    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+
     font-size: small;
-}
-footer p {
     text-align: center;
     color: #222;
     opacity: 0.6;
     transition: opacity ease-in 0.15s;
 }
-footer p:hover {
+footer p {
+    margin: 0.2rem 0;
+}
+footer:hover {
     opacity: 1;
 }
 footer a {
@@ -119,12 +128,35 @@ table tbody tr:nth-child(odd) {
     background: #f3f3f3;
 }
 
+.controls {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+.controls.horizontal {
+    flex-direction: row;
+}
+.controls.horizontal button {
+    margin: 0 0.4rem;
+}
+
 button {
+    width: 100%;
+    color: white;
+    background-color: #1e88e5;
+
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.6rem;
     cursor: pointer;
 }
 button.icon {
     border-style: none;
     background: none;
+    color: initial;
+}
+button.danger {
+    background-color: #c62828;
 }
 
 dl {
@@ -148,4 +180,4 @@ div.problem {
     background: rgb(255, 132, 132);
     padding: 6px;
     margin: 8px auto;
-}
+} */
